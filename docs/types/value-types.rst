@@ -331,7 +331,7 @@ on ``call``.
 
 * ``code`` and ``codehash``
 
-You can query the deployed code for any smart contract. Use ``code`` to get the EVM bytecode as a string, which might be empty. Use ``codehash`` get the Keccak-256 hash of that code.
+Możesz wysyłać zapytania do wdrożonego kodu dla dowolnego inteligentnego kontraktu. Użyj ``code``, aby uzyskać kod bajtowy EVM jako ciąg, który może być pusty. Użyj ``codehash``, aby uzyskać skrót Keccak-256 tego kodu. 
 
 .. note::
     All contracts can be converted to ``address`` type, so it is possible to query the balance of the
