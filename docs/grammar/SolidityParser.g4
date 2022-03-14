@@ -12,6 +12,7 @@ options { tokenVocab=SolidityLexer; }
 sourceUnit: (
 	pragmaDirective
 	| importDirective
+	| usingDirective
 	| contractDefinition
 	| interfaceDefinition
 	| libraryDefinition
@@ -311,10 +312,10 @@ errorDefinition:
 	Semicolon;
 
 /**
- * Using directive to bind library functions to types.
- * Can occur within contracts and libraries.
+ * Using directive to bind library functions and free functions to types.
+ * Can occur within contracts and libraries and at the file level.
  */
-usingDirective: Using identifierPath For (Mul | typeName) Semicolon;
+usingDirective: Using (identifierPath | (LBrace identifierPath (Comma identifierPath)* RBrace)) For (Mul | typeName) Semicolon;
 /**
  * A type name can be an elementary type, a function type, a mapping type, a user-defined type
  * (e.g. a contract or struct) or an array type.
@@ -476,7 +477,13 @@ revertStatement: Revert expression callArgumentList Semicolon;
  * The contents of an inline assembly block use a separate scanner/lexer, i.e. the set of keywords and
  * allowed identifiers is different inside an inline assembly block.
  */
-assemblyStatement: Assembly AssemblyDialect? AssemblyLBrace yulStatement* YulRBrace;
+assemblyStatement: Assembly AssemblyDialect? assemblyFlags? AssemblyLBrace yulStatement* YulRBrace;
+
+/**
+ * Assembly flags.
+ * Comma-separated list of double-quoted strings as flags.
+ */
+assemblyFlags: AssemblyBlockLParen AssemblyFlagString (AssemblyBlockComma AssemblyFlagString)* AssemblyBlockRParen;
 
 //@doc:inline
 variableDeclarationList: variableDeclarations+=variableDeclaration (Comma variableDeclarations+=variableDeclaration)*;
