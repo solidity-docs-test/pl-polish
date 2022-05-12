@@ -4,12 +4,12 @@
 Mapping Types
 =============
 
-Mapping types use the syntax ``mapping(_KeyType => _ValueType)`` and variables
-of mapping type are declared using the syntax ``mapping(_KeyType => _ValueType) _VariableName``.
-The ``_KeyType`` can be any
-built-in value type, ``bytes``, ``string``, or any contract or enum type. Other user-defined
-or complex types, such as mappings, structs or array types are not allowed.
-``_ValueType`` can be any type, including mappings, arrays and structs.
+Typy mapowania używają składni ``mapping(_KeyType => _ValueType)`` i zmiennych
+typu mapowania są deklarowane przy użyciu składni ``mapping(_KeyType => _ValueType) _VariableName``.
+``_KeyType`` może być dowolny
+wbudowany typ wartości, „bajty”, „ciąg” lub dowolny typ kontraktu lub wyliczenia. Inne zdefiniowane przez użytkownika
+lub złożone typy, takie jak mapowania, struktury lub typy tablicowe są niedozwolone.
+``_ValueType`` może być dowolnym typem, w tym mapowaniami, tablicami i strukturami.
 
 You can think of mappings as `hash tables <https://en.wikipedia.org/wiki/Hash_table>`_, which are virtually initialised
 such that every possible key exists and is mapped to a value whose
